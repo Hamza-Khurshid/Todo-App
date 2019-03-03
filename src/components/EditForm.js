@@ -25,40 +25,73 @@ const styles = theme => ({
 });
 
 class EditForm extends React.Component {
+  constructor(props){
+    super(props);
 
-  saveData = (e) => {
-      e.preventDefault();
+    this.state = {
+      title: '',
+      desc: ''
+    }
 
-    let name = e.target.elements.itemname.value;
-    let desc = e.target.elements.desc.value;
-    
-    this.props.editDataTo(desc);
+    // this.onChangeInput = this.onChangeInput.bind(this);
   }
 
+  saveData = (e) => {
+    e.preventDefault();
+
+    let id = this.props.data3;
+    let title = e.target.elements.itemname.value;
+    let desc = e.target.elements.desc.value;
+
+    let todo = {
+      id,
+      title,
+      desc
+    }
+
+    // console.log(todo);
+    this.props.editDataTo(todo);
+  }
+
+  componentDidMount() {
+    this.setState( {
+      title: this.props.data1,
+      desc: this.props.data2
+    } )
+    // console.log(this.props)
+  }
+
+  onChangeInput = name => event => {
+    this.setState( {
+      [name]: event.target.value
+    } )
+  }
 
   render() {
     const { classes } = this.props;
-
+    
     return (
         <Paper elevation={5} className='paper-cls'>
         <form onSubmit={this.saveData} className={classes.container} noValidate autoComplete="off" className="form-class">
 
             <TextField
                 fullWidth
-                id="standard-full-width"
+                refs="title"
                 name='itemname'
                 label="Title"
                 margin="normal"
-                value={this.props.data1}
+                value={this.state.title}
+                onChange={this.onChangeInput('title')}
             />
 
             <TextField
             fullWidth
-                id="standard-full-width"
+                refs="desc"
                 name='desc'
                 label="Description"
                 margin="normal"
-                value={this.props.data2}
+                value={this.state.desc}
+                onChange={this.onChangeInput('desc')}
             />
 
             <Button type='submit' variant="outlined" color="primary" className='but'>Submit</Button>

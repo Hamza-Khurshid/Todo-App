@@ -32,6 +32,7 @@ class Form extends React.Component {
     let name = e.target.elements.itemname.value;
     let desc = e.target.elements.desc.value;
     let obj = {
+      id: Math.random(),
       title: name,
       desc
     }

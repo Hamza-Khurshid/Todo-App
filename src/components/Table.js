@@ -57,8 +57,8 @@ class CustomizedTable extends Component {
               </CustomTableCell>
               <CustomTableCell align="left">{row.desc}</CustomTableCell>
               <CustomTableCell align="left"> 
-                <Button onClick={() => this.props.editHandler(row.desc)} variant="contained" color='primary' className='bt'>Edit</Button>
-                <Button onClick={() => this.props.deletHandler(row.desc)} variant="contained" color='secondary'>Delete</Button>
+                <Button onClick={() => this.props.editHandler(row.id)} variant="contained" color='primary' className='bt'>Edit</Button>
+                <Button onClick={() => this.props.deletHandler(row.id)} variant="contained" color='secondary'>Delete</Button>
               </CustomTableCell>
             </TableRow>
           ))}
