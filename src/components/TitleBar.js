@@ -27,7 +27,7 @@ function ButtonAppBar(props) {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" color="inherit">
-            ToDo App
+            ToDo App Final
           </Typography>
         </Toolbar>
       </AppBar>
